@@ -12,8 +12,12 @@ OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 all: $(BIN_DIR)/$(NAME)
 
+bonus: CXXFLAGS += -D__BONUS__
+bonus: LDFLAGS += -lglfw -lGL
+bonus: re
+
 $(BIN_DIR)/$(NAME): $(OBJS) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
