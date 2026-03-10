@@ -21,6 +21,6 @@ Parsing::Parsing(int argc, char **argv) {
 	}
 }
 
-const std::vector<std::string> Parsing::getActions() {
+const std::vector<std::string> &Parsing::getActions() const {
 	return (this->actions);
 }

@@ -21,7 +21,7 @@ class Parsing
 		Parsing(const Parsing &src);
 		~Parsing();
 
-		const std::vector<std::string> getActions();
+		const std::vector<std::string> &getActions() const;
 
 };
 
