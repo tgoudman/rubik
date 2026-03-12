@@ -12,8 +12,8 @@ OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 all: $(BIN_DIR)/$(NAME)
 
-bonus: CXXFLAGS += -D__BONUS__
-bonus: LDFLAGS += -lglfw -lGL
+bonus: CXXFLAGS += -D__BONUS__ -I includes/glm
+bonus: LDFLAGS += -lglfw -lGL -lGLEW
 bonus: re
 
 $(BIN_DIR)/$(NAME): $(OBJS) | $(BIN_DIR)
