@@ -7,8 +7,8 @@
 #include <glm/gtx/transform.hpp>
 
 GLuint          initVAO(void);
-GLuint          initVBO(void);
+void            initVBO(GLuint &vertexbuffer, GLuint &colorbuffer);
 glm::mat4       initMVP(int width, int height);
-void    		renderLoop(GLFWwindow *window, GLuint vertexbuffer, GLuint programID, glm::mat4 mvp);
+void    		renderLoop(GLFWwindow *window, GLuint vertexbuffer, GLuint colorbuffer, GLuint programID, glm::mat4 mvp);
 
 #endif

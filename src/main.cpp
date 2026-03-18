@@ -30,11 +30,14 @@ int main(int argc, char **argv)
     GLuint    		programID = loadShaders("shaders/vertex.glsl", "shaders/fragment.glsl");
     glm::mat4       mvp = initMVP(width, height);
     GLuint          vao = initVAO();
-    GLuint          vbo = initVBO();
+    GLuint          vertexbuffer;
+    GLuint          colorbuffer;
+
+    initVBO(vertexbuffer, colorbuffer);
 
     (void)vao;
 
-    renderLoop(window, vbo, programID, mvp);
+    renderLoop(window, vertexbuffer, colorbuffer, programID, mvp);
     closeWindow(window);
 #endif
     return (0);
