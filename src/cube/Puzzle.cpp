@@ -2,11 +2,11 @@
 
 /* ================= [ Constructor ] ================= */
 
-Puzzle::Puzzle(std::vector<char> colors): colors(colors) {
+Puzzle::Puzzle() {
 	createPuzzle();
 }
 
-Puzzle::Puzzle(int face, int pieces, int corner, std::vector<char> colors): face(face), pieces(pieces), corner(corner), colors(colors) {
+Puzzle::Puzzle(int face, int pieces, int corner): face(face), pieces(pieces), corner(corner) {
 	createPuzzle();
 }
 
@@ -17,7 +17,7 @@ Puzzle::~Puzzle() {
 /* ==================== [ Utils ] ==================== */
 
 void Puzzle::createPuzzle() {
-	this->module = new BasicCube(this);
+	this->module = new Megaminx(this);
 }
 
 /* =================== [ Getters ] =================== */

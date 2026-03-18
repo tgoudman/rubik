@@ -3,8 +3,9 @@
 
 # include "iostream"
 # include "vector"
+# include "map"
 
-# include "./module/child/BasicCube.hpp"
+# include "./module/child/Megaminx.hpp"
 
 class Puzzle
 {
@@ -14,20 +15,17 @@ class Puzzle
 		int	pieces = 9;
 		int	corner = 3;
 
-		std::vector<char>	colors;
 		RubikModule	*module;
 
 		void	createPuzzle();
-
-		Puzzle();
 
 	public:
 		Puzzle	&operator=(const Puzzle &src);
 		Puzzle(const Puzzle &src);
 		~Puzzle();
 
-		Puzzle(std::vector<char> colors);
-		Puzzle(int face, int pieces, int corner, std::vector<char> colors);
+		Puzzle();
+		Puzzle(int face, int pieces, int corner);
 
 		int					getFace() const;
 		int					getPieces() const;

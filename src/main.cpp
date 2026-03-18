@@ -11,7 +11,8 @@ int main(int argc, char **argv) {
 			std::cout << "Step " << i << " = " << actions[i] << std::endl;
 		}
 
-		Puzzle puzzle({'Y', 'B', 'R', 'G', 'W', 'O'});
+		Puzzle	*puzzle = new Puzzle();
+		delete(puzzle);
 
 	} catch (const std::runtime_error& e) {
 		std::cout << "Error : " << e.what() << std::endl;

@@ -13,10 +13,10 @@ FaceModule::~FaceModule() {
 
 /* ==================== [ Utils ] ==================== */
 
-void	FaceModule::initSpins(int sides) {
-	this->spins.reserve(sides + 1);
+void	FaceModule::initSpins(int spin) {
+	this->spins.reserve(spin);
 
-	for (int n = 0; n < sides + 1; n++) {
+	for (int n = 0; n < spin; n++) {
 		this->spins.emplace_back();
 	}
 }

@@ -9,7 +9,7 @@ RubikModule::RubikModule(Puzzle *puzzle): puzzle(puzzle) {
 	createCube();
 }
 
-RubikModule::RubikModule(Puzzle *puzzle, int sides): puzzle(puzzle), sides(sides) {
+RubikModule::RubikModule(Puzzle *puzzle, int face, int sides, int cube, int sideCube, int spin): puzzle(puzzle), face(face), sides(sides), cube(cube), sideCube(sideCube), spin(spin) {
 	std::cout << "🎉 RubikModule has been created for this puzzle!" << std::endl;
 
 	createCube();
@@ -21,15 +21,20 @@ RubikModule::~RubikModule() {
 
 /* ==================== [ Utils ] ==================== */
 
-void	RubikModule::createCube() {
-	this->faces.reserve(puzzle->getFace());
+void	RubikModule::cubeCreation(std::map<std::string, std::string> moveColor) {
+	this->cubes.reserve(this->cube);
 
-	for (int n = 0; n < puzzle->getFace(); n++) {
+	for ()
+}
+
+void	RubikModule::createCube() {
+	this->faces.reserve(this->face);
+	for (int n = 0; n < this->face; n++) {
 		this->faces.emplace_back(puzzle);
 	}
 
 	for (auto& face : this->faces) {
-		face.initSpins(this->sides);
+		face.initSpins(this->spin);
 	}
 }
 
