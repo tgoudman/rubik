@@ -1,5 +1,5 @@
-#include "../includes/Parsing.hpp"
-#include "../includes/Cube.hpp"
+#include "../includes/parsing/Parsing.hpp"
+#include "../includes/cube/Puzzle.hpp"
 #ifdef __BONUS__
     #include <GLFW/glfw3.h>
 #endif
@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 			std::cout << "Step " << i << " = " << actions[i] << std::endl;
 		}
 
-		Cube cube({'Y', 'B', 'R', 'G', 'W', 'O'}, 9);
+		Puzzle puzzle({'Y', 'B', 'R', 'G', 'W', 'O'});
 
 	} catch (const std::runtime_error& e) {
 		std::cout << "Error : " << e.what() << std::endl;
