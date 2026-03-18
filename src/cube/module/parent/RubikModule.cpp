@@ -21,10 +21,8 @@ RubikModule::~RubikModule() {
 
 /* ==================== [ Utils ] ==================== */
 
-void	RubikModule::cubeCreation(std::map<std::string, std::string> moveColor) {
+void	RubikModule::cubeCreation() {
 	this->cubes.reserve(this->cube);
-
-	for ()
 }
 
 void	RubikModule::createCube() {

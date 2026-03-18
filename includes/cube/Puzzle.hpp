@@ -15,6 +15,7 @@ class Puzzle
 		int	pieces = 9;
 		int	corner = 3;
 
+		std::vector<char>	colors;
 		RubikModule	*module;
 
 		void	createPuzzle();

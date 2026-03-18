@@ -3,9 +3,9 @@
 /* ================= [ Constructor ] ================= */
 
 CreatePuzzle::CreatePuzzle(std::map<std::string, std::string> mvColorMap) {
-	this->cubes {
-		{}
-	};
+	for (const auto test : mvColorMap) {
+		std::cout << "debug" << std::endl;
+	}
 }
 
 CreatePuzzle::~CreatePuzzle() {}
