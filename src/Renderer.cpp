@@ -121,22 +121,33 @@ glm::mat4   initMVP(int width, int height)
     return Projection * View * Model;
 }
 
-void    renderLoop(GLFWwindow *window, GLuint vertexbuffer, GLuint colorbuffer, GLuint programID, glm::mat4 mvp)
+void renderLoop(GLFWwindow *window, GLuint vertexbuffer, GLuint colorbuffer, GLuint programID, glm::mat4 mvp)
 {
-	GLuint MatrixID = glGetUniformLocation(programID, "MVP");
+    GLuint MatrixID = glGetUniformLocation(programID, "MVP");
+    glm::mat4 cubieMatrices[27];
+    // Initialise les positions des cubies
+    for (int x = 0; x < 3; ++x) {
+        for (int y = 0; y < 3; ++y) {
+            for (int z = 0; z < 3; ++z) {
+                int index = x + y*3 + z*9;
+                cubieMatrices[index] = glm::translate(glm::mat4(1.0f), glm::vec3(x-1, y-1, z-1));
+            }
+        }
+    }
+
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
 
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// Active Shader
+        // Active Shader
         glUseProgram(programID);
-		// Send MVP
-        glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &mvp[0][0]); 
 
+        // Active les attributs de sommets
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
@@ -145,7 +156,14 @@ void    renderLoop(GLFWwindow *window, GLuint vertexbuffer, GLuint colorbuffer, 
         glBindBuffer(GL_ARRAY_BUFFER, colorbuffer);
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
-        glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
+        // Dessine chaque cubie
+        for (int i = 0; i < 27; ++i) {
+            glm::mat4 model = cubieMatrices[i];
+            glm::mat4 mvp_cubie = mvp * model; // Combine la matrice globale avec celle du cubie
+            glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &mvp_cubie[0][0]);
+            glDrawArrays(GL_TRIANGLES, 0, 12 * 3); // 12 triangles (36 sommets)
+        }
+
         glDisableVertexAttribArray(1);
         glDisableVertexAttribArray(0);
 
